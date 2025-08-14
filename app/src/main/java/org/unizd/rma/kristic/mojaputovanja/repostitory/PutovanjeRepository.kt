@@ -8,15 +8,9 @@ class PutovanjeRepository(private val dao: PutovanjeDao) {
 
     val svaPutovanja: Flow<List<Putovanje>> = dao.getSvaPutovanja()
 
-    suspend fun dodajPutovanje(putovanje: Putovanje) {
-        dao.dodajPutovanje(putovanje)
-    }
+    fun getPutovanje(id: Int): Flow<Putovanje?> = dao.getPutovanjePoId(id)
 
-    suspend fun urediPutovanje(putovanje: Putovanje) {
-        dao.urediPutovanje(putovanje)
-    }
-
-    suspend fun obrisiPutovanje(putovanje: Putovanje) {
-        dao.obrisiPutovanje(putovanje)
-    }
+    suspend fun dodajPutovanje(putovanje: Putovanje) = dao.dodajPutovanje(putovanje)
+    suspend fun urediPutovanje(putovanje: Putovanje) = dao.urediPutovanje(putovanje)
+    suspend fun obrisiPutovanje(putovanje: Putovanje) = dao.obrisiPutovanje(putovanje)
 }

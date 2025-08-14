@@ -10,5 +10,6 @@ data class Putovanje(
     val prijevoz: String,
     val tipPutovanja: String,
     val datum: String,
-    val slikaUri: String
+    val opis: String? = null,
+    val slikeUri: List<String> = emptyList()
 )
