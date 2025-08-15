@@ -1,15 +1,18 @@
 package org.unizd.rma.kristic.mojaputovanja.ui
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
+import org.unizd.rma.kristic.mojaputovanja.R
 import org.unizd.rma.kristic.mojaputovanja.viewmodel.PutovanjeViewModel
-import androidx.compose.material3.ExperimentalMaterial3Api
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -44,19 +47,27 @@ fun DetaljiPutovanjaScreen(
                 .padding(16.dp)
                 .fillMaxSize()
         ) {
+            // 🔹 Galerija svih slika
             if (putovanje.slikeUri.isNotEmpty()) {
+                val slike = remember { putovanje.slikeUri }
                 LazyRow(Modifier.fillMaxWidth()) {
-                    items(putovanje.slikeUri) { uri ->
+                    items(slike) { uri ->
                         AsyncImage(
                             model = uri,
                             contentDescription = null,
-                            modifier = Modifier.size(220.dp).padding(end = 8.dp)
+                            placeholder = painterResource(R.drawable.logo_small),
+                            error = painterResource(R.drawable.logo_small),
+                            contentScale = ContentScale.Crop,
+                            modifier = Modifier
+                                .size(220.dp)
+                                .padding(end = 8.dp)
                         )
                     }
                 }
                 Spacer(Modifier.height(12.dp))
             }
 
+            // 🔹 Tekstualni detalji
             Text("Destinacija: ${putovanje.destinacija}", style = MaterialTheme.typography.titleMedium)
             Text("Prijevoz: ${putovanje.prijevoz}", style = MaterialTheme.typography.bodyMedium)
             Text("Tip: ${putovanje.tipPutovanja}", style = MaterialTheme.typography.bodyMedium)
