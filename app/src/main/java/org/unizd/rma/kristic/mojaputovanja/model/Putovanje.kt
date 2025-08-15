@@ -12,4 +12,5 @@ data class Putovanje(
     val datum: String,
     val opis: String? = null,
     val slikeUri: List<String> = emptyList()
+
 )

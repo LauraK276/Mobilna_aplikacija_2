@@ -30,10 +30,10 @@ fun PutovanjeScreen(
         floatingActionButton = {
             LargeFloatingActionButton(
                 onClick = onDodajClick,
-                containerColor = Color(0xFF2196F3) // plava
+                containerColor = Color(0xFF2196F3)
             ) {
                 Text(
-                    "Dodaj uspomenu",
+                    "    Dodaj uspomenu    ",
                     color = Color.White
                 )
             }
@@ -50,7 +50,7 @@ fun PutovanjeScreen(
                     contentScale = ContentScale.Crop,
                     modifier = Modifier
                         .fillMaxWidth()
-                        .aspectRatio(1f) // omjer 1:1 – kvadrat
+                        .aspectRatio(1f)
                 )
                 Spacer(Modifier.height(12.dp))
             }

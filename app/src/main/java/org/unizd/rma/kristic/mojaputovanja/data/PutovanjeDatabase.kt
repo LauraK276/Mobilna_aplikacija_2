@@ -10,10 +10,10 @@ import org.unizd.rma.kristic.mojaputovanja.model.Putovanje
 
 @Database(
     entities = [Putovanje::class],
-    version = 5,                // ⇦ povisi (npr. na 5)
+    version = 5,
     exportSchema = false
 )
-@TypeConverters(Converters::class) // ⇦ VAŽNO
+@TypeConverters(Converters::class) // VAŽNO
 abstract class PutovanjeDatabase : RoomDatabase() {
 
     abstract fun putovanjeDao(): PutovanjeDao
