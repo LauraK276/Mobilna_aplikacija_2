@@ -16,7 +16,7 @@ class Converters {
     @TypeConverter
     fun toList(data: String): List<String> {
         if (data.isBlank()) return emptyList()
-        // split s obzirom na naš delimiter; vraćamo original zamjenom escape-a
+        // split s obzirom na naš delimiter vraćamo original zamjenom escape-a
         return data.split(DELIM).map { it.replace("\\$DELIM", DELIM) }
     }
 }

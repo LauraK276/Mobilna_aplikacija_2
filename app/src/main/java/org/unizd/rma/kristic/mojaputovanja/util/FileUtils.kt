@@ -9,7 +9,7 @@ import java.io.FileOutputStream
 import java.util.UUID
 
 object FileUtils {
-    //Kopira listu URI-ja u app-private folder i vraća listu apsolutnih putanja
+
     fun copyUrisToAppStorage(context: Context, uris: List<Uri>): List<String> {
         val outDir = File(context.filesDir, "images").apply { if (!exists()) mkdirs() }
         val resolver = context.contentResolver
