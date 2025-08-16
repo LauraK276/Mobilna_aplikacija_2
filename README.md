@@ -24,14 +24,6 @@ Projekt razvijen u sklopu kolegija Razvoj mobilnih aplikacija.
 - Coil (učitavanje slika)
 
 
-## Screenshotovi
-Početni zaslon:
-![Početni zaslon](app/sampledata/Snimka zaslona 2025-08-16 214054.png)
-Zaslon za dodavanje putovanja:
-![Početni zaslon](app/sampledata/Snimka zaslona 2025-08-16 213353.png)
-Zalon za pregled uspomena i informacija s putovanja:
-![Početni zaslon](app/sampledata/Snimka zaslona 2025-08-16 213327.png)
-
 
 ## Pokretanje projekta
 1. Kloniraj repozitorij:
