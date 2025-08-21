@@ -13,7 +13,6 @@ class PutovanjeViewModel(private val repository: PutovanjeRepository) : ViewMode
     val svaPutovanja: StateFlow<List<Putovanje>> =
         repository.svaPutovanja.stateIn(viewModelScope, SharingStarted.Lazily, emptyList())
 
-    /** Dohvat jednog putovanja kao StateFlow za ekran detalja */
     fun getPutovanjeState(id: Int): StateFlow<Putovanje?> =
         repository.getPutovanje(id).stateIn(viewModelScope, SharingStarted.Lazily, null)
 
@@ -28,7 +27,10 @@ class PutovanjeViewModel(private val repository: PutovanjeRepository) : ViewMode
     fun obrisiPutovanje(putovanje: Putovanje) = viewModelScope.launch {
         repository.obrisiPutovanje(putovanje)
     }
+
+    fun azurirajPutovanje(p: Putovanje) = viewModelScope.launch { repository.azurirajPutovanje(p) }
 }
+
 
 class PutovanjeViewModelFactory(private val repository: PutovanjeRepository) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {

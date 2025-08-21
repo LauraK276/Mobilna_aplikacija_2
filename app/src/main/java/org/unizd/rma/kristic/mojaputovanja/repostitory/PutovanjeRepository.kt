@@ -13,6 +13,8 @@ class PutovanjeRepository(private val dao: PutovanjeDao) {
     suspend fun dodajPutovanje(putovanje: Putovanje) = dao.dodajPutovanje(putovanje)
     suspend fun urediPutovanje(putovanje: Putovanje) = dao.urediPutovanje(putovanje)
     suspend fun obrisiPutovanje(putovanje: Putovanje) = dao.obrisiPutovanje(putovanje)
+    suspend fun azurirajPutovanje(p: Putovanje) = dao.azurirajPutovanje(p)
+
 }
 
 

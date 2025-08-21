@@ -32,6 +32,7 @@ class MainActivity : ComponentActivity() {
             MaterialTheme {
                 val navController = rememberNavController()
                 NavHost(navController, startDestination = "lista") {
+
                     composable("lista") {
                         PutovanjeScreen(
                             viewModel = viewModel,
@@ -39,9 +40,14 @@ class MainActivity : ComponentActivity() {
                             onOpenDetalji = { id -> navController.navigate("detalji/$id") }
                         )
                     }
+
                     composable("dodaj") {
-                        DodajPutovanjeScreen(viewModel) { navController.popBackStack() }
+                        DodajPutovanjeScreen(
+                            viewModel = viewModel,
+                            onSave = { navController.popBackStack() }
+                        )
                     }
+
                     composable(
                         route = "detalji/{id}",
                         arguments = listOf(navArgument("id") { type = NavType.IntType })
@@ -51,11 +57,26 @@ class MainActivity : ComponentActivity() {
                             id = id,
                             viewModel = viewModel,
                             onBack = { navController.popBackStack() },
-                            onDelete = { navController.popBackStack() }
+                            onDelete = { navController.popBackStack() },
+                            onEdit = { navController.navigate("uredi/$id") }
+                        )
+                    }
+
+                    composable(
+                        route = "uredi/{id}",
+                        arguments = listOf(navArgument("id") { type = NavType.IntType })
+                    ) { backStackEntry ->
+                        val id = backStackEntry.arguments?.getInt("id") ?: 0
+                        UrediPutovanjeScreen(
+                            id = id,
+                            viewModel = viewModel,
+                            onSaved = { navController.popBackStack() },
+                            onBack  = { navController.popBackStack() }
                         )
                     }
                 }
             }
         }
+
     }
 }

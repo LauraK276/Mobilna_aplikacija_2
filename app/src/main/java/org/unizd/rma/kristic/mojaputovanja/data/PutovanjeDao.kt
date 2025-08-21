@@ -21,4 +21,7 @@ interface PutovanjeDao {
 
     @Delete
     suspend fun obrisiPutovanje(putovanje: Putovanje)
+
+    @Update
+    suspend fun azurirajPutovanje(putovanje: Putovanje)
 }
